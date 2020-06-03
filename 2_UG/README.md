@@ -1,4 +1,4 @@
-# プログラム③：最終提案ゲーム
+# プログラム②：最終提案ゲーム
 
 ## これから作る実験プログラムの概要：
 
@@ -357,16 +357,10 @@ page_sequence = [
 ```Python
 SESSION_CONFIGS = [
     dict(
-        name='PG4',
-        display_name="はじめての公共財ゲーム",
-        num_demo_participants=4,
-        app_sequence=['public_goods_trial']
-    ),
-    dict(
-        name='SD4',
-        display_name="はじめての社会的ジレンマ",
-        num_demo_participants=4,
-        app_sequence=['SD4_trial']
+        name='questionnaire',
+        display_name="はじめての質問紙",
+        num_demo_participants=1, # ここでデモ用に参加する人数は定義しておく必要があります．
+        app_sequence=['questionnaire']
     ),
     dict(
         name='UG',
@@ -377,6 +371,7 @@ SESSION_CONFIGS = [
 
 ]
 ```
+
 
 
 ## サーバとして起動

@@ -1,4 +1,4 @@
-# プログラム④：独裁者ゲーム
+# プログラム③：独裁者ゲーム
 
 ## これから作る実験プログラムの概要：
 
@@ -266,19 +266,14 @@ page_sequence = [
 * oTree で実験を実装するには，`settings.py`の中の`SESSION_CONFIGS`にアプリを登録する必要があります．
 * ここでは公共財ゲームに追記する形で記載します．
 
+
 ```Python
 SESSION_CONFIGS = [
     dict(
-        name='PG4',
-        display_name="はじめての公共財ゲーム",
-        num_demo_participants=4,
-        app_sequence=['public_goods_trial']
-    ),
-    dict(
-        name='SD4',
-        display_name="はじめての社会的ジレンマ",
-        num_demo_participants=4,
-        app_sequence=['SD4_trial']
+        name='questionnaire',
+        display_name="はじめての質問紙",
+        num_demo_participants=1, # ここでデモ用に参加する人数は定義しておく必要があります．
+        app_sequence=['questionnaire']
     ),
     dict(
         name='UG',
@@ -291,9 +286,9 @@ SESSION_CONFIGS = [
         display_name="はじめての独裁者ゲーム",
         num_demo_participants=2,
         app_sequence=['dictator_trial']
-    ),]
+    ),
+]
 ```
-
 
 ## サーバとして起動
 * 自身の端末をサーバとして起動します．

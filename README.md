@@ -1,9 +1,5 @@
 
-
-[oTreeによるオンライン経済実験セミナー（連続セミナー）]の資料です．
-
-
-# 開発編のご案内
+# はじめに
 
 * 当日は以下のセッティングができていることを前提に，話を進めていきます．
 
@@ -46,11 +42,11 @@
 * ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/1_Questionnaire)
 
 
-### No.1：最終提案ゲーム
+### No.2：最終提案ゲーム
 
 * ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/2_UG)
 
-### No.2：独裁者ゲーム
+### No.3：独裁者ゲーム
 
 * ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/3_DG)
 

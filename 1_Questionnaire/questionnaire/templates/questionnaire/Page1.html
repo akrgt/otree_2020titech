@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    質問項目：
+{% endblock %}
+
+{% block content %}
+
+<div>
+    <p>
+        以下の質問について，最もあてはまる(最も近い)選択肢を選んでください．<br>
+    </p>
+</div>
+
+<div style="background-color:#e6e6e6;">
+    {% formfield player.q_tanmatsu %}
+    {% formfield player.q_gender %}
+    {% formfield player.q_age %}
+    {% formfield player.q_country %}
+</div>
+
+
+    {% next_button %}
+
+{% endblock %}

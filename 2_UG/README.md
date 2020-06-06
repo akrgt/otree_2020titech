@@ -313,9 +313,9 @@ class Page5(WaitPage):
   def after_all_players_arrive(self):
       self.group.set_payoffs()
 ```
-* WaitPage：用意されている「全員集合！」のページを表示する
+* WaitPage：用意されている「しばらくお待ち下さい」のページを表示する
 * def after_all_players_arrive(self):
-  - 全てのプレイヤーが「全員集合！」のページにたどり着くのを待ってから，それ以降の関数を実行する．
+  - 全てのプレイヤーが「しばらくお待ち下さい」のページにたどり着くのを待ってから，それ以降の関数を実行する．
   - 全員の貢献額の合計＆一人ひとりの利得を計算する．
 
 
@@ -332,7 +332,6 @@ class Page6(Page):
 
 ### 表示する順番を定義する
 
-* **今回はどこもいじりません．**
 * 一番最後に画面を表示する順番を定義します．
 ```
 page_sequence = [
@@ -381,8 +380,6 @@ otree devserver
 ```
   - これで自身の端末で実験を実施することができます．
   - [http://localhost:8000/](http://localhost:8000/)にアクセスしてみてください．
-
-
 
 
 

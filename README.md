@@ -5,7 +5,8 @@
 
 ## Pythonの準備
 
-* oTreeを実行する際には，Python3.7以上インストールすることが求められています．
+* oTreeを実行する際には，Python3.7がインストールすることが求められています．
+  * 3.8ではいけません．
 
   * [Python](https://www.python.org/)
   * [Anaconda](https://www.anaconda.com/)

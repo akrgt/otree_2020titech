@@ -41,7 +41,7 @@
 ### No.1：質問紙
 
 * ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/1_Questionnaire)
-
+V
 
 ### No.2：最終提案ゲーム
 
@@ -50,6 +50,18 @@
 ### No.3：独裁者ゲーム
 
 * ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/3_DG)
+
+### No.4：公共財ゲーム
+
+* ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/4_PG)
+
+### No.5：公共財ゲームの応用
+
+* ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/5_PG_adv)
+
+### No.6：もともと用意されているゲームを使う
+
+* ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/6_GAMES)
 
 
 ### その他補足事項

@@ -28,12 +28,49 @@ USE_POINTS = True
     
 
 
-### 実際の実験時に発行するURLは？
-  - oTreeの機能の中で`Rooms`という機能がある．
-  - ここにIDを登録することで実行可能．
-  - 授業で使う際には学生番号を登録したり．
-  - `Sessions`という機能を用いることもできる
+### Rooms機能を使う
+  * Rooms機能：実験参加者に割り振るIDを設定する．
+  * 上部に記載されている**Rooms**→**Econ 101 class**をクリックして挙動を確認しましょう．
+    * `Session config:`で**Public Goods**を選びます．
+    * `Number of participants`は**3**とします．
+    * `http://localhost:8000/room/econ101/`のリンクをクリックしてください．
+    * 次の画面で**Alice**，**Bob**か**Charlie**と入力してください．
+    * 実験が開始します．
+    - `Sessions`という機能を用いることもできる
       - ランダムな文字列URLが発行されるので，実験の際には`Rooms`の方が使い勝手が良い．
+
+
+### Rooms機能の設定方法
+
+`settings.py`にはこのように記載されています．
+```Python
+ROOMS = [
+    dict(
+        name='econ101',
+        display_name='Econ 101 class',
+        participant_label_file='_rooms/econ101.txt',
+    ),
+    dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
+]
+```
+
+* ここの`name`に当たるところが先程のURLの`room`以下に続きます．
+* `display_name`は画面に表示される名前です．
+* `participant_label_file`でIDを登録，指定することができます．
+
+
+それでは，，`_rooms/econ101.txt'`を見てみましょう．
+
+```txt
+Alice
+Bob
+Charlie
+```
+…と記載されています．
+* `_rooms/`以下にテキストファイルでIDを保存すれば，実験参加者IDを登録することができます．
+
+* 実験で使う場合には適当にIDを発行して，授業で使う時には学生番号を入力するようにしています．
+
 
 
 

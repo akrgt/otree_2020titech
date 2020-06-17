@@ -35,7 +35,12 @@ SESSION_CONFIGS = [
         num_demo_participants=2,
         app_sequence=['ultimatum_trial', 'dictator_trial', 'questionnaire']
     ),
-
+    dict(
+        name='public_goods_trial',
+        display_name="はじめての公共財ゲーム",
+        num_demo_participants=4, 
+        app_sequence=['public_goods_trial']
+    ),
 
 ]
 

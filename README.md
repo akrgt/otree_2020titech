@@ -41,7 +41,6 @@
 ### No.1：質問紙
 
 * ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/1_Questionnaire)
-V
 
 ### No.2：最終提案ゲーム
 
@@ -93,7 +92,7 @@ V
 * [oTree](https://www.otree.org/)
   * [oTreeを使ったときに引用すべき文献](https://www.sciencedirect.com/science/article/pii/S2214635016000101)
 * [公式オンラインマニュアル](https://otree.readthedocs.io/en/latest/)
-* [oTreeのオンラインマニュアルを和訳しています．](https://akrgt.gitbook.io/otree-jp/)
+* [oTreeのオンラインマニュアルを和訳したり何だりしています．](https://akrgt.gitbook.io/otree-jp/)
   * 最近少し手が回らずサボリ気味です．修正作業を行っておりますので，見にくい点・わかりにくい点などがあってもお許しください
 
 ## Django関連資料

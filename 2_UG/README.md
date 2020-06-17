@@ -184,7 +184,7 @@ class Group(BaseGroup):
 </p>
 <br>
 <p>
-    相手はあなたに{% group.proposal %}を渡すことを提案しました．
+    相手はあなたに{{ group.proposal }}を渡すことを提案しました．
 </p>
 
 <div class="form-group required">
@@ -311,7 +311,7 @@ class Page4(Page):
 ```Python
 class Page5(WaitPage):
   def after_all_players_arrive(self):
-      self.group.set_payoffs()
+      self.group.compute()
 ```
 * WaitPage：用意されている「しばらくお待ち下さい」のページを表示する
 * def after_all_players_arrive(self):

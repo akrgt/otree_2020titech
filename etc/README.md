@@ -1,3 +1,36 @@
+
+
+## Fieldについて
+
+### oTreeでは以下のField形式を扱うことができる．
+
+* BooleanField (for true/false and yes/no values)
+  * ブーリアン型，True/FALSEやYES/NOなど．
+  * 1/0の値を入力するのにも使える．
+
+* CurrencyField
+  * 通貨型
+  * 金額を扱う時に使う
+  * `settings.py`で`REAL_WORLD_CURRENCY_CODE`や`LANGUAGE_CODE`，`USE_POINTS`の設定に応じて「XXポイント」「XXpoints」「$XX」と言った表記をしてくれる．
+
+* IntegerField
+  * 整数型
+
+* FloatField
+  * 単精度浮動小数点型？
+  * 小数を入れられる
+
+* StringField
+  * 文字入力ができる．
+
+* LongStringField
+  * （長い）文字入力ができる．
+
+
+
+
+
+
 その他Tips
 
 ### 日本語にしよう
@@ -24,9 +57,7 @@ USE_POINTS = True
   - 埋め込み表示ができるので，最初のルール説明用画面に別途ファイルで用意したインストラクションを埋め込んでいる．
   
   - ボタン1つで表示したり閉じたりできる．
-  
     
-
 
 ### Rooms機能を使う
   * Rooms機能：実験参加者に割り振るIDを設定する．
@@ -101,9 +132,9 @@ postgres://postgres@localhost/django_db
 
 * あわせて`psycopg2`というPythonパッケージが必要になる．
 
-  ```
-  pip install -U psycopg2
-  ```
+```
+pip install -U psycopg2
+```
 
 
 
@@ -162,5 +193,36 @@ postgres://postgres@localhost/django_db
 
 
 
+### 実際によく使う`if`
+  * 例えば，勝った場合と負けた場合の表示を変えたいなど．
+  * `if`を使います．
+  
+```html
+{% if player.is_winner %} あなたの勝ち！ {% endif %}
+```
+
+```html
+{% if some_number >= 0 %}
+    正の数
+{% else %}
+    負の数
+{% endif %}
+```
 
 
+### 動画・画像を入れたい！
+
+* YouTubeを入れてみる．
+
+```html
+<img src="https://youtu.be/8AEd1cZoMDw" width="500px" />
+```
+
+* 画像を入れてみる．
+  * 外部サイトではなく，oTreeのプロジェクトフォルダの中に入れられる．
+  * `_static/`の中に保存する．
+  * 画像がいっぱいになるとわからないので，実験ごとにフォルダを用意しておくと良い．
+```html
+<img src="{% static "folder_name/picture.jpg" %}"/>
+
+```

@@ -111,7 +111,53 @@
 ```
 
 
+## チャットさせてみよう．
 
+* 公共財ゲームを始める前にチャットでのやり取りをしてみましょう．
+* Page1の`{% formfield player.contribution %}`の直前に，以下のコードを書いてください．
+
+```html
+{% chat %}
+```
+
+* 1回実行してみましょう．
+
+* 公共財ゲームのような役割が決まっていないゲームはこれで良いかと思います．
+* また，役割があるゲームの場合はこんな感じにしてあげると良さそうです．
+  * ex.最終提案ゲーム
+
+
+`models.py`
+```Python
+class Player(BasePlayer):
+
+    def role(self):
+        if self.id_in_group == 1:
+            return 'Proposer'
+        else:
+            return 'Accepter'
+
+    def chat_nickname(self):
+        return 'Group {} {}'.format(self.group.id_in_subsession, self.role())
+```
+
+`pages.py`
+```python
+class Page1(Page):
+    def vars_for_template(self):
+        return dict(
+            role=self.player.role(),
+            nickname=self.player.chat_nickname()
+        )
+```
+`Page1.html`
+```html
+{% chat nickname=nickname channel=role %}
+```
+
+* ただし問題もある．
+  * 役割(role)を日本語にしようとすると2バイト文字はダメ！と怒られる．
+  * チャット本文は行けるのになぜ．．．．．
 
 
 ## settingにおけるsession configsの定義：

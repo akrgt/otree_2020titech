@@ -63,23 +63,25 @@
 
 ## Sliderで入力する方法①
 
-(ただし，かなり限定的なことしかできない)
-
 ```Python
+class Player(BasePlayer):
     contribution = models.CurrencyField(
-        choices=currency_range(c(0), c(Constants.endowment), c(1)), 
+        choices=currency_range(c(0), c(Constants.endowment), c(1)),
+	min = 0,
+	max = 20,
+	initial=10,
         label="あなたはいくら貢献しますか？",
         widget=widgets.SliderInput
     )
 ```
 * `widgets.SliderInput`を使うとスライダー形式で入力ができる．
-  * しかし，何故かmax100，min0の設定しかできない．．．
-  * かなり謎だが，100点満点のタスクの性質によってはバッチリハマる．．．
+  * 大川内さんありがとうございます！
+  * 完璧にできました！！
 
 
 ## Sliderで入力する方法②
 
-### Page2を書き換える
+### Page1.htmlを書き換える
 ```html
 
     <input type="range" name="contribution" min="1" max="20" step="1"> [{{ player.contribution }} ]

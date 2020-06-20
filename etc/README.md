@@ -222,7 +222,9 @@ pip install -U psycopg2
   * 外部サイトではなく，oTreeのプロジェクトフォルダの中に入れられる．
   * `_static/`の中に保存する．
   * 画像がいっぱいになるとわからないので，実験ごとにフォルダを用意しておくと良い．
+
+
 ```html
 <img src="{% static "folder_name/picture.jpg" %}"/>
-
 ```
+

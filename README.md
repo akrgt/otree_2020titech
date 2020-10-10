@@ -62,6 +62,9 @@
 
 * ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/6_GAMES)
 
+### No.7：AWSの設定を行う
+
+* ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/7_AWS)
 
 ### その他補足事項
 

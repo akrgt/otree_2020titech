@@ -31,7 +31,7 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
 
     proposal = models.CurrencyField(
-        choices=currency_range(c(0), c(Constants.endowment), c(1)),
+        choices=currency_range(c(0), c(Constants.endowment),c(1)),
         label="あなたはいくら相手に渡しますか？",
     )
 

@@ -163,7 +163,7 @@ class Group(BaseGroup):
 <p>
     あなたは<strong>プレイヤー1</strong>に割り振られました
 </p>
-{% formfields group.proposal %}
+{% formfield group.proposal %}
     {% next_button %}
 {% endblock %}
 ```

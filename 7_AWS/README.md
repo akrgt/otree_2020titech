@@ -10,13 +10,14 @@
 * AnacondaによるPythonのインストール
 * PostgreSQLのインストール
 * Redisのインストール
-* Anaconda Powershellを用いたoTreeのインストール
-* Settings.pyでの設定
 * Firewallの設定
+* Anaconda Powershellを用いたoTreeのインストール
+* Visual C++のインストール（必要な場合と不要な場合がある模様）
+* Settings.pyでの設定
 
 ### 余裕があればやりたいこと
 
-* Rooms機能の説明
+* Rooms機能
 
 ## 今日できないこと
 
@@ -87,8 +88,6 @@ $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "https
 
 ### Anacondaのインストール
 
-
-
 ![4](picture/4.png)
 
 ![5](picture/5.png)
@@ -128,6 +127,7 @@ $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "https
 ## PostgreSQLのインストール
 
 * oTreeにはもともとSQLiteが入っているが，実際の実験の時には安定しないので，PostgreSQLをインストールすることが推奨されています．
+  * [参考](https://otree.readthedocs.io/en/latest/server/server-windows.html#install-redis)
 
 ### PostgreSQLのダウンロード
 
@@ -204,6 +204,21 @@ $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "https
 
   
 
+* 続いて，`pg_hba.conf`ファイルを変更します．
+
+  * デフォルト設定のままでインストールしていたら，`C:\Program Files\PostgreSQL\`の中のどこかにあります．
+  * 今回はPostgreSQL13を使っているので`C:\Program Files\PostgreSQL\13\data`にありました．
+
+![46](picture/46.png)
+
+* 上記の通り，86/88行目を`trust`に変更しました．
+
+  * しかし，oTreeのページではデフォルトである`md5`から`trust`への変更が求められていましたが，デフォルトが`scram-sha-256`になっていたので，PostgreSQL13では違うのかもしれません．
+  * 変更しなくても良いかもしれませんが，念のためマニュアルに沿っておきました．
+    * [参考](https://otree.readthedocs.io/en/latest/server/server-windows.html#database-postgres)
+
+  
+
 * 以上でPostgreSQLのインストールは終了です．
 
 
@@ -221,15 +236,13 @@ Redisに関する細かい説明は，以下の参考資料をご確認くださ
 
 ### Redisのダウンロード
 
-
-
-### Redisのインストール
-
 * https://github.com/microsoftarchive/redis/releases/tag/win-3.2.100よりダウンロードをします．
 
 ![27](picture/27.png)
 
 
+
+### Redisのインストール
 
 ![28](picture/28.png)
 
@@ -261,6 +274,8 @@ Redisに関する細かい説明は，以下の参考資料をご確認くださ
 
 
 
+
+
 ## Firewallの設定
 
 引き続き，ファイヤーウォールの設定をします．
@@ -289,12 +304,6 @@ Redisに関する細かい説明は，以下の参考資料をご確認くださ
 
 
 
-* All ConnectionをAllowします．
-
-
-
-
-
 
 
 ## Anaconda Powershellを用いたoTreeのインストール
@@ -311,17 +320,29 @@ Redisに関する細かい説明は，以下の参考資料をご確認くださ
 
 * あわせて，PostgreSQLを使うために，'psycopg2'をインストールします．
 
-* 作業のために，Visual Studio Codeを入れます．
-
-* よく見ると，visual C++が求められるかも
-
-* 素直に従いましょう．
-
-https://visualstudio.microsoft.com/ja/vs/features/cplusplus/
+  ```
+  pip install -U psycopg2
+  ```
 
 
 
-インストールしないとまずいみたい．
+* 以上でoTreeのインストールは終了です．
+  * ただし，今回はこのあとoTreeを走らせてみようとしたら，Visual C++のインストールが求められました．
+  * https://otree.readthedocs.io/en/latest/install-windows.html に記載されている通り，入れてみます．ただ，どういう条件で発動するのかがイマイチわかっていません．
+
+
+
+## Visual C++のインストール
+
+### Visual C++ のダウンロード
+
+* https://visualstudio.microsoft.com/ja/vs/features/cplusplus/よりダウンロードします．
+
+![43](picture/43.png)
+
+### Visual C++ のインストール
+
+* 今回は一度インストールしてから入れ直してしまったので，スクショを入れられていません．改めてアップしますので，お許しください．
 
 
 
@@ -331,6 +352,8 @@ https://visualstudio.microsoft.com/ja/vs/features/cplusplus/
 
 ## Settings.pyでの設定
 
+* 作業のために，IDE（私は最近[Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)派）を入れておきましょう．
+  * この後の作業が便利です．
 * ここではデスクトップで'otreetest'という新しいプロジェクトを作って，作業する場合を例とします．
 
 ```
@@ -340,37 +363,158 @@ otree startproject otreetest
 
 
 
-
+* さらに，実際に実験を行うために，`settings.py`で以下の設定が必要になります．
 
 
 
 ### PostgreSQL関係の設定
 
-　'environ['DATABASE_URL'] = 'postgres://postgres:test@localhost/django_db''
+* データベースの設定をしておきます．
+  * 先程設定したユーザ名とパスワードで入れておきます．
 
-
-
-
+```
+environ['DATABASE_URL'] = 'postgres://postgres:test@localhost/django_db'
+```
 
 
 
 ### Redis関係の設定
 
-## 
+* oTree3.0から設定が求められるようになりました．
+  * [参考](https://otree.readthedocs.io/en/latest/server/server-windows.html#install-redis)
 
+```
 environ['REDIS_URL'] = 'redis://localhost:6379'
+```
 
 
 
-## DEBUG modeの切り替え
+### ユーザ名とパスワードの設定
+
+* 環境変数での設定の方が安全であるようですが，実際にはこちらsettings.pyに書き込むだけで十分かと思います．
+  * ここでは`admin`というユーザ名で，`test`というパスワードを設定します．
+
+```
+ADMIN_USERNAME = 'admin'
+
+ADMIN_PASSWORD = 'test'
+```
 
 
 
-### パスワードの設定
+![47](picture/47.png)
+
+
+
+### DEBUG modeの切り替え
+
+* デバッグモードがオンだと，実験画面にデバッグ情報が表示されてしまいます．
+
+![48](picture/48.png)
+
+* 実際の実験には不要な情報なので，以下のようにします．
+
+```
+DEBUG = False
+```
+
+* 上記の設定をすることで，以下のようにデバッグ情報を削除することが出来ます．
+
+### ![49](picture/49a.png)
+
+### 
+
+
+
+* 適宜，`Server Check`を確認して，問題がないかを確認しましょう．
+
+
+
+![50](picture/50.png)
+
+![51](picture/51.png)
 
 
 
 
 
-## Rooms機能の説明
+## Rooms機能
 
+* Rooms機能を設定すると，こちらで実験参加者IDを設定することが出来ます．
+* 経済実験の実施にはこちらで「ID」を発行して，webサイト上で入力をしてもらうことが大半になるかと思います．
+  * IDで個人を指定しなければ，成果報酬の支払いが困難になる．
+
+### ID指定ファイルの用意
+
+* oTreeのプロジェクトフォルダの中にある`_room`の中にIDを記録したtxtファイルを作成します．
+  * 今回は`trial`という名前のroomを作成して，1-20までのIDを設定しました．
+  * アルファベットを設定することも出来ます．
+    * 日本語は試したことがありません．．．
+
+![52](picture/52.png)
+
+* ID指定ファイルの作成は以上です．
+
+### settings.py上の作業
+
+* `settings.py` に以下を指定します．
+
+```
+ROOMS = [
+    dict(
+        name='trial',
+        display_name='トライアル',
+        participant_label_file='_rooms/trial.txt',
+    ),
+    dict(name='live_demo', 
+    display_name='IDを指定しない（好きに入れる）ことも可能'),
+]
+```
+
+
+
+### oTreeページにアクセスしてからの作業
+
+* `Rooms`にアクセスします．
+
+  ![53](picture/53.png)
+
+  
+
+* トライアルをクリックします．
+
+  ![54](picture/54.png)
+
+  
+
+* このページで実施するアプリケーションと参加する人数を設定します．
+
+  * ここで設定する人数はトータルでの実験参加者数です．
+  * 実施するアプリケーションで設定されている人数の倍数である必要があります．
+  * Ex.3人で実施する実験ならば，3，6，9...人でなければなりません．
+  * `create`をクリックすると準備が出来ます．
+
+![55](picture/55.png)
+
+
+
+* http://実験用のURL/room/trial/にアクセスします．
+  * 赤枠の中にIDを入力してもらうと，実験にアクセスすることが出来ます．
+
+![56](picture/56.png)
+
+
+
+* 日本語化する場合には，`settings.py`の`LANGUAGE_CODE = 'en'`を`LANGUAGE_CODE = 'ja'`にしておきましょう．
+* このページ自体を変更するのは多少ややこしいので，オススメしません．
+  * 実は`C:\ProgramData\Anaconda3\Lib\site-packages\otree\templates\otree`にある`RoomInputLabel.html`を書き換えれば変更できる，
+  * 個人的には，`Base.html` にweb解析ツールを仕込むことが多い．
+  * ここに入れておけば，全てのoTreeページでの動きを解析できるのでかなり便利である．
+
+
+
+
+
+
+
+## お疲れさまでした．

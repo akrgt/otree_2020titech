@@ -66,6 +66,10 @@
 
 * ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/7_AWS)
 
+### No.8：Y!クラウドソーシングの設定を行う
+
+* ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/8_YCS)
+
 ### その他補足事項
 
 * ### [コチラ](https://github.com/akrgt/otree_2020titech/tree/master/etc)

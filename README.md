@@ -89,6 +89,8 @@
 
 * ### [コチラ](https://speakerdeck.com/akrgt/dong-jing-gong-ye-da-xue-otreeniyoruonrainjing-ji-shi-yan-seminabu-zu-zi-liao)
 
+* ### [スケーラーのトピック](https://www.scaler.com/topics/python/)
+
 * ただし，随時変更する可能性があります．
 
 
